@@ -26,22 +26,13 @@ namespace uj.input.actions
     ""name"": ""InputActions"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Player General"",
             ""id"": ""58102b3c-1d75-46b7-8e86-266fd887e11d"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""5253baf2-d6fa-4238-9f27-c3944ec43182"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""Value"",
-                    ""id"": ""bf63d08c-db17-4f09-b75d-838faaafac99"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -147,10 +138,27 @@ namespace uj.input.actions
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
+                }
+            ]
+        },
+        {
+            ""name"": ""Player First Person"",
+            ""id"": ""83e3dd45-de26-4942-886f-09d8ad92ad7e"",
+            ""actions"": [
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
+                    ""id"": ""9d7ca748-f346-407a-9bb9-714cbca2bffb"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""8e74dba4-6a87-4892-9a43-6a06fa2f8b78"",
+                    ""id"": ""f8cbab6a-577e-4d92-992c-18b0f8a7c342"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -164,10 +172,12 @@ namespace uj.input.actions
     ],
     ""controlSchemes"": []
 }");
-            // Player
-            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-            m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+            // Player General
+            m_PlayerGeneral = asset.FindActionMap("Player General", throwIfNotFound: true);
+            m_PlayerGeneral_Move = m_PlayerGeneral.FindAction("Move", throwIfNotFound: true);
+            // Player First Person
+            m_PlayerFirstPerson = asset.FindActionMap("Player First Person", throwIfNotFound: true);
+            m_PlayerFirstPerson_Look = m_PlayerFirstPerson.FindAction("Look", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -226,62 +236,103 @@ namespace uj.input.actions
             return asset.FindBinding(bindingMask, out action);
         }
 
-        // Player
-        private readonly InputActionMap m_Player;
-        private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-        private readonly InputAction m_Player_Move;
-        private readonly InputAction m_Player_Look;
-        public struct PlayerActions
+        // Player General
+        private readonly InputActionMap m_PlayerGeneral;
+        private List<IPlayerGeneralActions> m_PlayerGeneralActionsCallbackInterfaces = new List<IPlayerGeneralActions>();
+        private readonly InputAction m_PlayerGeneral_Move;
+        public struct PlayerGeneralActions
         {
             private @InputActions m_Wrapper;
-            public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Move => m_Wrapper.m_Player_Move;
-            public InputAction @Look => m_Wrapper.m_Player_Look;
-            public InputActionMap Get() { return m_Wrapper.m_Player; }
+            public PlayerGeneralActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Move => m_Wrapper.m_PlayerGeneral_Move;
+            public InputActionMap Get() { return m_Wrapper.m_PlayerGeneral; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-            public void AddCallbacks(IPlayerActions instance)
+            public static implicit operator InputActionMap(PlayerGeneralActions set) { return set.Get(); }
+            public void AddCallbacks(IPlayerGeneralActions instance)
             {
-                if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
-                m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
+                if (instance == null || m_Wrapper.m_PlayerGeneralActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_PlayerGeneralActionsCallbackInterfaces.Add(instance);
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
+            }
+
+            private void UnregisterCallbacks(IPlayerGeneralActions instance)
+            {
+                @Move.started -= instance.OnMove;
+                @Move.performed -= instance.OnMove;
+                @Move.canceled -= instance.OnMove;
+            }
+
+            public void RemoveCallbacks(IPlayerGeneralActions instance)
+            {
+                if (m_Wrapper.m_PlayerGeneralActionsCallbackInterfaces.Remove(instance))
+                    UnregisterCallbacks(instance);
+            }
+
+            public void SetCallbacks(IPlayerGeneralActions instance)
+            {
+                foreach (var item in m_Wrapper.m_PlayerGeneralActionsCallbackInterfaces)
+                    UnregisterCallbacks(item);
+                m_Wrapper.m_PlayerGeneralActionsCallbackInterfaces.Clear();
+                AddCallbacks(instance);
+            }
+        }
+        public PlayerGeneralActions @PlayerGeneral => new PlayerGeneralActions(this);
+
+        // Player First Person
+        private readonly InputActionMap m_PlayerFirstPerson;
+        private List<IPlayerFirstPersonActions> m_PlayerFirstPersonActionsCallbackInterfaces = new List<IPlayerFirstPersonActions>();
+        private readonly InputAction m_PlayerFirstPerson_Look;
+        public struct PlayerFirstPersonActions
+        {
+            private @InputActions m_Wrapper;
+            public PlayerFirstPersonActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Look => m_Wrapper.m_PlayerFirstPerson_Look;
+            public InputActionMap Get() { return m_Wrapper.m_PlayerFirstPerson; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(PlayerFirstPersonActions set) { return set.Get(); }
+            public void AddCallbacks(IPlayerFirstPersonActions instance)
+            {
+                if (instance == null || m_Wrapper.m_PlayerFirstPersonActionsCallbackInterfaces.Contains(instance)) return;
+                m_Wrapper.m_PlayerFirstPersonActionsCallbackInterfaces.Add(instance);
                 @Look.started += instance.OnLook;
                 @Look.performed += instance.OnLook;
                 @Look.canceled += instance.OnLook;
             }
 
-            private void UnregisterCallbacks(IPlayerActions instance)
+            private void UnregisterCallbacks(IPlayerFirstPersonActions instance)
             {
-                @Move.started -= instance.OnMove;
-                @Move.performed -= instance.OnMove;
-                @Move.canceled -= instance.OnMove;
                 @Look.started -= instance.OnLook;
                 @Look.performed -= instance.OnLook;
                 @Look.canceled -= instance.OnLook;
             }
 
-            public void RemoveCallbacks(IPlayerActions instance)
+            public void RemoveCallbacks(IPlayerFirstPersonActions instance)
             {
-                if (m_Wrapper.m_PlayerActionsCallbackInterfaces.Remove(instance))
+                if (m_Wrapper.m_PlayerFirstPersonActionsCallbackInterfaces.Remove(instance))
                     UnregisterCallbacks(instance);
             }
 
-            public void SetCallbacks(IPlayerActions instance)
+            public void SetCallbacks(IPlayerFirstPersonActions instance)
             {
-                foreach (var item in m_Wrapper.m_PlayerActionsCallbackInterfaces)
+                foreach (var item in m_Wrapper.m_PlayerFirstPersonActionsCallbackInterfaces)
                     UnregisterCallbacks(item);
-                m_Wrapper.m_PlayerActionsCallbackInterfaces.Clear();
+                m_Wrapper.m_PlayerFirstPersonActionsCallbackInterfaces.Clear();
                 AddCallbacks(instance);
             }
         }
-        public PlayerActions @Player => new PlayerActions(this);
-        public interface IPlayerActions
+        public PlayerFirstPersonActions @PlayerFirstPerson => new PlayerFirstPersonActions(this);
+        public interface IPlayerGeneralActions
         {
             void OnMove(InputAction.CallbackContext context);
+        }
+        public interface IPlayerFirstPersonActions
+        {
             void OnLook(InputAction.CallbackContext context);
         }
     }

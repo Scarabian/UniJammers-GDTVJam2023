@@ -20,12 +20,12 @@ namespace uj.input
 
         public Vector2 GetMoveInput()
         {
-            return inputActions.Player.Move.ReadValue<Vector2>();
+            return inputActions.PlayerGeneral.Move.ReadValue<Vector2>();
         }
 
-        public Vector2 GetLookInput()
+        public Vector2 GetFirstPersonLookInput()
         {
-            return inputActions.Player.Move.ReadValue<Vector2>();
+            return inputActions.PlayerFirstPerson.Look.ReadValue<Vector2>();
         }
     }
 }
