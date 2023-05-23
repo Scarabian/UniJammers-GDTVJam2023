@@ -27,7 +27,6 @@ namespace uj.input
         public Vector2 GetLookInput()
         {
             return inputActions.Player.Look.ReadValue<Vector2>();
-
         }
 
         public bool GetCameraSwitchPressedThisFrame()
