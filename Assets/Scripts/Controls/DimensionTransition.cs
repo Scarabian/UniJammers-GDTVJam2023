@@ -135,7 +135,7 @@ public class RenderTextureSwitcher : MonoBehaviour
             largeSCreenRawImage.texture = tDCam.targetTexture;
             isLightMode = true;
         }
-
+    }
     public  bool getIsDull()
     {
         return isDull;
