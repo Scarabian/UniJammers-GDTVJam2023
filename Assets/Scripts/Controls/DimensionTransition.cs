@@ -42,14 +42,6 @@ public class RenderTextureSwitcher : MonoBehaviour
 
         }
     }
-    private void SwitchScreens()
-    {
-        Debug.Log("small = " + smallScreenRawImage.texture + "Large = " + largeSCreenRawImage.texture + "\nfpCam = " + fPCam.targetTexture + "tDCam = " + tDCam.targetTexture);
-
-            SwitchScreens();
-        }
-    }
-
 
     private void SwitchScreens()
     {
