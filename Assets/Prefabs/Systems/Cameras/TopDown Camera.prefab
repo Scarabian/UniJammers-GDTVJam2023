@@ -105,6 +105,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4813888557637141240}
   - component: {fileID: 2541091813171120368}
+  - component: {fileID: 3443614967224583741}
+  - component: {fileID: 40084921198154070}
   m_Layer: 0
   m_Name: TopDown Camera
   m_TagString: Untagged
@@ -119,15 +121,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8926347968140264208}
-  m_LocalRotation: {x: 0.43318874, y: 0.000000015508169, z: -0.000000007453612, w: 0.90130323}
+  m_LocalRotation: {x: 0.43318725, y: 0, z: 0, w: 0.90130395}
   m_LocalPosition: {x: 0, y: 12.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2348590291172623479}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 83.713, z: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 51.34, y: 0, z: 0}
 --- !u!114 &2541091813171120368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +169,35 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2348590291172623479}
+--- !u!114 &3443614967224583741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926347968140264208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8568a3741e799844abe9bf18ea3deb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fPCam: {fileID: 0}
+  tDCam: {fileID: 0}
+  smallScreenRawImage: {fileID: 0}
+  largeSCreenRawImage: {fileID: 0}
+--- !u!114 &40084921198154070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926347968140264208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8568a3741e799844abe9bf18ea3deb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fPCam: {fileID: 0}
+  tDCam: {fileID: 0}
+  smallScreenRawImage: {fileID: 0}
+  largeSCreenRawImage: {fileID: 0}

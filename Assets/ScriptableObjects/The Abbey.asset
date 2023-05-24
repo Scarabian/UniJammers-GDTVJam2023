@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3115e12bc1f724cbff986c15d2cfa8, type: 3}
+  m_Name: The Abbey
+  m_EditorClassIdentifier: 
+  title: 'The Abbey '
+  tip: Inside the Abbey a feeling of desolation seems to pervade the very air. Just
+    as outside things seemed to have been left in a hurry chairs knocked over Sister
+    Angelinas wine glass emptied onto the table and then onto the far almost like
+    a thicker red substance would.

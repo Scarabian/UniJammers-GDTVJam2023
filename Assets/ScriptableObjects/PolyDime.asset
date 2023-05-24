@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc3115e12bc1f724cbff986c15d2cfa8, type: 3}
+  m_Name: PolyDime
+  m_EditorClassIdentifier: 
+  title: PolyDime
+  tip: Being a PolyDime (Poly Dimensional) Light warrior, you have a presence in
+    both wdimensions at tall times. With brief concentration you ca neven see what
+    is happening inthe other dimensin. This is a great ability that few PolyDimes
+    achieve (especially at your level!). Be careful though becasue some of the obstacles
+    in the other dimension can affect you in this!
