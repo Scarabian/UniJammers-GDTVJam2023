@@ -18,24 +18,29 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public int AddItem(string itemName, int quantity, Sprite itemSprite)
+    public int AddItem(int itemQuantiy, string itemName, Sprite itemSprite, GameObject itemPrefab, string itemNameDull, Sprite itemSpriteDull, GameObject itemPrefabDull)
     {
-        //Check every Slot in the array
         for (int i = 0; i < itemSlot.Length; i++)
         {
-            if (itemSlot[i].isFull == false && itemSlot[i].itemName == itemName || itemSlot[i].quantity == 0)
+            if(itemSlot[i].isFull == false && itemSlot[i].nameInInventory == itemName || itemSlot[i].quantityOfInventory == 0)
             {
-                int leftOverItems = itemSlot[i].AddItem(itemName, quantity, itemSprite);
+                int leftOverItems = itemSlot[i].AddItem(itemQuantiy, itemName, itemSprite, itemPrefab, itemNameDull, itemSpriteDull, itemPrefabDull);
 
                 if (leftOverItems > 0)
                 {
-                    leftOverItems = AddItem(itemName, leftOverItems, itemSprite);
+                    leftOverItems = AddItem(leftOverItems, itemName, itemSprite, itemPrefab, itemNameDull, itemSpriteDull, itemPrefabDull);
                 }
                 return leftOverItems;
             }
+
+            /* if(itemSlot[i].isFull == false && itemSlot[i].nameInInventory == items_SOs[i].name)
+            {
+                int leftOverItems = itemSlot[i].AddItem(itemQuantiy, itemName, itemSprite, itemPrefab, itemNameDull, itemSpriteDull, itemPrefabDull);
+            } */
         }
-        return quantity;
+        return itemQuantiy; 
     }
+
 
     public void DeselectAllSlots()
     {
