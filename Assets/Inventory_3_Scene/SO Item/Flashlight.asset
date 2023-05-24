@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10781d70121ac7c49acbead209edb9c6, type: 3}
+  m_Name: Flashlight
+  m_EditorClassIdentifier: 
+  itemName: Flashlight
+  itemSprite: {fileID: 21300000, guid: 410c896e661a19d4aaee556ef0730c5a, type: 3}
+  itemPrefab: {fileID: 2650136242980750605, guid: c0c793a209ba58b4cb9d92a12a8dde51,
+    type: 3}
+  itemQuantiy: 1
+  wORLD: 0
+  itemNameDull: Scepter
+  itemSpriteDull: {fileID: 21300000, guid: 2d795aad1646a0848bc1b2518889f43f, type: 3}
+  itemPrefabDull: {fileID: 6509949416693082091, guid: 9988f56729acac349a654c3248215de1,
+    type: 3}

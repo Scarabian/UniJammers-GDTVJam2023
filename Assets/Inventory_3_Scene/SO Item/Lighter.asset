@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10781d70121ac7c49acbead209edb9c6, type: 3}
+  m_Name: Lighter
+  m_EditorClassIdentifier: 
+  itemName: Ligther
+  itemSprite: {fileID: 21300000, guid: d5e68cea508f3e44fbdedca65203bfad, type: 3}
+  itemPrefab: {fileID: 6509949416693082091, guid: 68344d9df7eb4f1488661ce360daa7bc,
+    type: 3}
+  itemQuantiy: 1
+  wORLD: 0
+  itemNameDull: Wand
+  itemSpriteDull: {fileID: 21300000, guid: 01af8d400bfb35a4c87cf8d682b017d6, type: 3}
+  itemPrefabDull: {fileID: 6509949416693082091, guid: ac40625e854451943aaf093890b9e11d,
+    type: 3}

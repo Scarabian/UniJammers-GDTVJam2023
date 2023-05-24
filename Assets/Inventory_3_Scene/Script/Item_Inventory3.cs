@@ -4,10 +4,28 @@ using UnityEngine;
 
 public class Item_Inventory3 : MonoBehaviour
 {
-    [SerializeField] public string itemName;
-    [SerializeField] public int quantity;
-    [SerializeField] public Sprite itemSprite;
+    [SerializeField] Items_SO items_SO;
+
+    private string itemName;
+    private Sprite itemSprite;
+    private int itemQuantiy;
+    private GameObject itemPrefab;
+    private string itemNameDull;
+    private Sprite itemSpriteDull;
+    private GameObject itemPrefabDull;
+
     private InventoryManager inventoryManager;
+    // Start is called before the first frame update
+    private void Awake() 
+    {
+        itemName = items_SO.itemName;
+        itemSprite = items_SO.itemSprite;
+        itemNameDull = items_SO.itemNameDull;
+        itemSpriteDull= items_SO.itemSpriteDull;
+        itemQuantiy = items_SO.itemQuantiy;
+        itemPrefab = items_SO.itemPrefab;
+        itemPrefabDull = items_SO.itemPrefabDull;
+    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -18,7 +36,7 @@ public class Item_Inventory3 : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            int leftOverItems = inventoryManager.AddItem(itemName, quantity, itemSprite);
+            int leftOverItems = inventoryManager.AddItem(itemQuantiy, itemName, itemSprite, itemPrefab, itemNameDull, itemSpriteDull, itemPrefabDull);
 
             if(leftOverItems <= 0)
             {
@@ -26,7 +44,7 @@ public class Item_Inventory3 : MonoBehaviour
             }
             else
             {
-                quantity = leftOverItems;
+                itemQuantiy = leftOverItems;
             }
         }
     }

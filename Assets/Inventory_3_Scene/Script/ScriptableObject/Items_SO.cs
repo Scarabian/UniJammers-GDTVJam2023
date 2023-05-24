@@ -6,7 +6,13 @@ using UnityEngine;
 public class Items_SO : ScriptableObject
 {
     public string itemName;
+    public Sprite itemSprite;
+    public GameObject itemPrefab;
+    public int itemQuantiy;
     public WhatWorldAreYouIn wORLD = new WhatWorldAreYouIn();
+    public string itemNameDull;
+    public Sprite itemSpriteDull;
+    public GameObject itemPrefabDull;
 
     public enum WhatWorldAreYouIn
     {
@@ -16,9 +22,9 @@ public class Items_SO : ScriptableObject
 
     public void ItemChange()
     {
-        if(itemName == "Sun")
+        if(itemName == "FlashLight")
         {
-
+            
         }
     }
 
