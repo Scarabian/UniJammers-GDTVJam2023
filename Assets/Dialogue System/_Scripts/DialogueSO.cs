@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "Conversation", menuName = "Dialogue/Conversation", order = 1)]
-public class ConversationSO : ScriptableObject
+public class DialogueSO : ScriptableObject
 {
     [System.Serializable]
     public struct Blurp
@@ -15,6 +15,6 @@ public class ConversationSO : ScriptableObject
     }
 
 
-    public List<Blurp> conversation;
+    public Blurp[] conversation;
     public bool hasFinished = false;
 }

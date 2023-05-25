@@ -9,15 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37368d3ac5980af4faa01e5722f957ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 1830a705d9b57be438b05461d63e358d, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
   conversation:
+  - name: Monk
+    color: {r: 0.7830189, g: 0.5319826, b: 0.21052866, a: 0}
+    text: Hello I am a monk
   - name: Player
-    text: Hello I'm am the player
-  - name: Monk leader
-    text: Hello player, I am the monk leader
+    color: {r: 0.18422928, g: 0.6568348, b: 0.8679245, a: 0}
+    text: Hello, I am player
+  - name: Monk
+    color: {r: 0.78431374, g: 0.53333336, b: 0.21176471, a: 0}
+    text: you must save us from the shades!
   - name: Player
-    text: What am I doing here
-  - name: Monk Leader
-    text: You are fighting the shades
+    color: {r: 0.18431373, g: 0.654902, b: 0.8666667, a: 0}
+    text: I'll get right on that.
+  hasFinished: 0

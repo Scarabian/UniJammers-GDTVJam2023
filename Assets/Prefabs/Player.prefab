@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 3369680824332375691}
   - component: {fileID: 9008111496260455545}
   - component: {fileID: 6556851036781105894}
-  - component: {fileID: 4221505708393589800}
   - component: {fileID: 3545699751387216053}
   m_Layer: 0
   m_Name: Player
@@ -224,7 +223,7 @@ Transform:
   - {fileID: 8288578688652137969}
   - {fileID: 5297863915488260820}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9008111496260455545
 MonoBehaviour:
@@ -269,29 +268,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1.08, z: 0}
---- !u!136 &4221505708393589800
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4367639838396294040}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3545699751387216053
 Rigidbody:
   m_ObjectHideFlags: 0

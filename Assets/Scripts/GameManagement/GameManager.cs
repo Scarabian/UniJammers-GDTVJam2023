@@ -64,13 +64,13 @@ namespace uj.GameManagement
             pauseScreen.SetActive(false);
         }
 
-        public void PauseGameNoScreen()
+        public void SuspendGame()
         {
             Time.timeScale = 0;
             isPaused = true;
         }
 
-        public void UnPauseGameNoScreen()
+        public void UnsuspendGame()
         {
             Time.timeScale = 1;
             isPaused = false;
