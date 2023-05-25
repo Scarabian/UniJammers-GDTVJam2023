@@ -8,6 +8,21 @@ namespace uj.GameManagement
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance;
+
+        public void Awake()
+        {
+            if (Instance != null && Instance != this) 
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
+
+
         InputReader inputReader;
 
         Fader fader;
