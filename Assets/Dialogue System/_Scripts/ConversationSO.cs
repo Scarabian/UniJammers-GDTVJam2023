@@ -10,9 +10,11 @@ public class ConversationSO : ScriptableObject
     public struct Blurp
     {
         public string name;
+        public Color color;
         public string text;
     }
 
 
     public List<Blurp> conversation;
+    public bool hasFinished = false;
 }
