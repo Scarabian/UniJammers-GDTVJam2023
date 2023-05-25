@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using TMPro.EditorUtilities;
 using uj.GameManagement;
+using System;
 
 public class DialoguePlayer : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class DialoguePlayer : MonoBehaviour
     public bool isPlayingDialogue = false;
 
     private DialogueSO currentDialogue;
-    private int conversationIdx;
+    private int conversationIdx = -1;
     [SerializeField]
     private TextMeshProUGUI nameText;
     [SerializeField]
@@ -45,6 +46,13 @@ public class DialoguePlayer : MonoBehaviour
     void Update()
     {
         if (!isPlayingDialogue) return;
+
+        if(Input.GetKeyDown(KeyCode.Space)) 
+        {
+            StepConversation();
+        }
+
+
     }
 
     public void StartDialogue(DialogueSO dialogue)
@@ -65,14 +73,32 @@ public class DialoguePlayer : MonoBehaviour
             GameManager.Instance.SuspendGame();
             currentDialogue = dialogue;
             dialogueBox.SetActive(true);
-            StepConversation(0);
+            StepConversation();
         }
     }
 
-    public void StepConversation(int idx)
+    private void StepConversation()
     {
-        nameText.text = currentDialogue.conversation[idx].name;
-        nameText.color = currentDialogue.conversation[idx].color;
-        speechText.text = currentDialogue.conversation[idx].text;
+        if(conversationIdx < currentDialogue.conversation.Length -1)
+        {
+            conversationIdx++;
+            nameText.text = currentDialogue.conversation[conversationIdx].actor.actorName;
+            nameText.color = currentDialogue.conversation[conversationIdx].actor.color;
+            speechText.text = currentDialogue.conversation[conversationIdx].text;
+
+        }
+        else
+        {
+            FinishConversation();
+        }
+    }
+
+    private void FinishConversation()
+    {
+        isPlayingDialogue = false;
+        currentDialogue.hasFinished = true;
+        conversationIdx = -1;
+        dialogueBox.SetActive(false);
+        GameManager.Instance.UnsuspendGame();
     }
 }

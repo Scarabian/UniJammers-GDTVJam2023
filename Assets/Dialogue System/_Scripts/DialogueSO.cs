@@ -9,8 +9,8 @@ public class DialogueSO : ScriptableObject
     [System.Serializable]
     public struct Blurp
     {
-        public string name;
-        public Color color;
+        
+        public DialogueActorSO actor;
         public string text;
     }
 

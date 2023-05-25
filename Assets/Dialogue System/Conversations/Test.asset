@@ -13,16 +13,12 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   conversation:
-  - name: Monk
-    color: {r: 0.7830189, g: 0.5319826, b: 0.21052866, a: 0}
+  - actor: {fileID: 11400000, guid: 50d274544557c1a4692e52058b6616ea, type: 2}
     text: Hello I am a monk
-  - name: Player
-    color: {r: 0.18422928, g: 0.6568348, b: 0.8679245, a: 0}
-    text: Hello, I am player
-  - name: Monk
-    color: {r: 0.78431374, g: 0.53333336, b: 0.21176471, a: 0}
-    text: you must save us from the shades!
-  - name: Player
-    color: {r: 0.18431373, g: 0.654902, b: 0.8666667, a: 0}
-    text: I'll get right on that.
+  - actor: {fileID: 11400000, guid: 6fc84ade4ecbf0040bb62bc0e875bcb8, type: 2}
+    text: Hello I am the player
+  - actor: {fileID: 11400000, guid: 50d274544557c1a4692e52058b6616ea, type: 2}
+    text: Save us from the shades!
+  - actor: {fileID: 11400000, guid: 6fc84ade4ecbf0040bb62bc0e875bcb8, type: 2}
+    text: I'll get right on that
   hasFinished: 0
