@@ -8,6 +8,21 @@ namespace uj.GameManagement
 {
     public class GameManager : MonoBehaviour
     {
+        public static GameManager Instance;
+
+        public void Awake()
+        {
+            if (Instance != null && Instance != this) 
+            {
+                Destroy(this);
+            }
+            else
+            {
+                Instance = this;
+            }
+        }
+
+
         InputReader inputReader;
 
         Fader fader;
@@ -47,6 +62,18 @@ namespace uj.GameManagement
             Time.timeScale = 1;
             isPaused = false;
             pauseScreen.SetActive(false);
+        }
+
+        public void SuspendGame()
+        {
+            Time.timeScale = 0;
+            isPaused = true;
+        }
+
+        public void UnsuspendGame()
+        {
+            Time.timeScale = 1;
+            isPaused = false;
         }
     }
 }
