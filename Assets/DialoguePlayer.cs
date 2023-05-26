@@ -23,6 +23,9 @@ public class DialoguePlayer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI speechText;
 
+    //this is super ugly and I should propbably just be using events instead of a callback structure
+    private DialogueTrigger triggerThatStartedDialogue;
+
 
     public static DialoguePlayer Instance;
 
@@ -55,7 +58,7 @@ public class DialoguePlayer : MonoBehaviour
 
     }
 
-    public void StartDialogue(DialogueSO dialogue)
+    public void StartDialogue(DialogueSO dialogue, DialogueTrigger caller)
     {
         if(dialogue.conversation.Length < 1)
         {
@@ -69,6 +72,7 @@ public class DialoguePlayer : MonoBehaviour
         }
         else
         {
+            triggerThatStartedDialogue= caller;
             isPlayingDialogue= true;
             GameManager.Instance.SuspendGame();
             currentDialogue = dialogue;
@@ -95,10 +99,14 @@ public class DialoguePlayer : MonoBehaviour
 
     private void FinishConversation()
     {
+        triggerThatStartedDialogue.OnFinishedDialogue(currentDialogue);
+        
         isPlayingDialogue = false;
         currentDialogue.hasFinished = true;
         conversationIdx = -1;
         dialogueBox.SetActive(false);
         GameManager.Instance.UnsuspendGame();
+        currentDialogue = null;
+
     }
 }

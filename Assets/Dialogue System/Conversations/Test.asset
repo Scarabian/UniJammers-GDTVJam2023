@@ -14,11 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversation:
   - actor: {fileID: 11400000, guid: 50d274544557c1a4692e52058b6616ea, type: 2}
-    text: Hello I am a monk
+    text: First
   - actor: {fileID: 11400000, guid: 6fc84ade4ecbf0040bb62bc0e875bcb8, type: 2}
     text: Hello I am the player
   - actor: {fileID: 11400000, guid: 50d274544557c1a4692e52058b6616ea, type: 2}
     text: Save us from the shades!
   - actor: {fileID: 11400000, guid: 6fc84ade4ecbf0040bb62bc0e875bcb8, type: 2}
     text: I'll get right on that
-  hasFinished: 0
+  hasFinished: 1
+  itemsToDropOnFinish:
+  - {fileID: 6509949416693082091, guid: 68344d9df7eb4f1488661ce360daa7bc, type: 3}
+  - {fileID: 2650136242980750605, guid: c0c793a209ba58b4cb9d92a12a8dde51, type: 3}

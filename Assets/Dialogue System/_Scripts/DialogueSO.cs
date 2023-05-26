@@ -9,7 +9,6 @@ public class DialogueSO : ScriptableObject
     [System.Serializable]
     public struct Blurp
     {
-        
         public DialogueActorSO actor;
         public string text;
     }
@@ -17,4 +16,5 @@ public class DialogueSO : ScriptableObject
 
     public Blurp[] conversation;
     public bool hasFinished = false;
+    public GameObject[] itemsToDropOnFinish;
 }

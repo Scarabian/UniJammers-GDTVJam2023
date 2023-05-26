@@ -6,7 +6,7 @@ using UnityEngine;
 public class DialogueActorSO : ScriptableObject
 {
     public string actorName;
-    [Tooltip("Don't forget to set the Alpha to 100")]
+    [Header("Rember to set the alpha to max")]
     public Color color;
     
 }
