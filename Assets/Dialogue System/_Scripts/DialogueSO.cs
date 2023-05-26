@@ -10,6 +10,7 @@ public class DialogueSO : ScriptableObject
     public struct Blurp
     {
         public DialogueActorSO actor;
+        [TextArea(5, 20)]
         public string text;
     }
 

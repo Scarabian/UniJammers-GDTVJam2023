@@ -48,6 +48,7 @@ public class DialoguePlayer : MonoBehaviour
     {
         if (!isPlayingDialogue) return;
 
+        //TODO replace this with new input system
         if(Input.GetKeyDown(KeyCode.Space)) 
         {
             StepConversation();
