@@ -10,4 +10,4 @@ To use Dialogue System.
 
 4. Add elements to the array, selecting an actor for each element and creating text.
 
-5. Attach a DialogueTrigger component to a character and assign the dialogue asset. Add a collider to the game object and check isTrigger. Dialogue will trigger when the player enters the collider.
+5. Nest the DialogueTrigger prefab on a character and assign the dialogue asset. Add a collider to the game object and check isTrigger. Dialogue will trigger when the player enters the collider.
