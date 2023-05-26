@@ -31,8 +31,6 @@ public class DialoguePlayer : MonoBehaviour
 
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
-
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -58,6 +56,7 @@ public class DialoguePlayer : MonoBehaviour
 
     }
 
+    //Starts the dialogue playback loop with a reference to the DialogueTrigger instance that called it.
     public void StartDialogue(DialogueSO dialogue, DialogueTrigger caller)
     {
         if(dialogue.conversation.Length < 1)
@@ -81,6 +80,7 @@ public class DialoguePlayer : MonoBehaviour
         }
     }
 
+    //increments the conversation index and populates the UI, or if at the end of the conversation, it will finish it.
     private void StepConversation()
     {
         if(conversationIdx < currentDialogue.conversation.Length -1)
@@ -97,10 +97,10 @@ public class DialoguePlayer : MonoBehaviour
         }
     }
 
+    //run callback on object that started the dialogue then reset the dialogue player and unsuspend the game
     private void FinishConversation()
     {
-        triggerThatStartedDialogue.OnFinishedDialogue(currentDialogue);
-        
+        triggerThatStartedDialogue.OnFinishedDialogue(currentDialogue);        
         isPlayingDialogue = false;
         currentDialogue.hasFinished = true;
         conversationIdx = -1;

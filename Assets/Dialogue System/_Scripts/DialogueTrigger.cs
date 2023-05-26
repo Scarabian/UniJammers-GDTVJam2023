@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using uj.GameManagement;
 using UnityEngine;
-//using UnityEngine.EventSystems;
 
 public class DialogueTrigger : MonoBehaviour
 {
@@ -15,8 +14,6 @@ public class DialogueTrigger : MonoBehaviour
     public SequenceBehavior sequenceBehavior;
     public DialogueSO[] dialogues;
 
-    //public EventTrigger.TriggerEvent onFinishCallback;
-
     private void OnTriggerEnter(Collider other)
     {
         if (!TriggerByProximity) return;
@@ -27,6 +24,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+    //Play whatever dialogue the dialogueIndexToPlay is pointing to
     public void TriggerDialogue()        
     {
         if (!DialoguePlayer.Instance.isPlayingDialogue)
@@ -35,6 +33,8 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+
+    //Use this public method to manually play a known index from code
     public void TriggerDialogue(int idx)
     {
         if (!DialoguePlayer.Instance.isPlayingDialogue)
@@ -43,6 +43,7 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+    //Called by DialoguePlayer singleton when dialogue has finished on the object that originally started the dialogue
     public void OnFinishedDialogue(DialogueSO dialogue)
     {
         
@@ -51,6 +52,7 @@ public class DialogueTrigger : MonoBehaviour
         {
             foreach (GameObject item in dialogue.itemsToDropOnFinish)
             {
+                //TODO replace this with behavior to give items. Items is of type Gameobject
                 Debug.Log(item);
             }
         }
@@ -58,6 +60,7 @@ public class DialogueTrigger : MonoBehaviour
         HandleSequence();
     }
 
+    //Handles what dialogue should be played next
     private void HandleSequence()
     {
         switch (sequenceBehavior)
