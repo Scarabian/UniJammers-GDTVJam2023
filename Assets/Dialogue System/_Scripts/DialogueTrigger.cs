@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
 {
+    public bool isProximity = true;
     public DialogueSO dialogue;
     private void OnTriggerEnter(Collider other)
     {
+        if (!isProximity) return;
         if (other.tag.Equals("Player"))
         {
-            if(DialoguePlayer.Instance.isPlayingDialogue == false)
-            {
-                DialoguePlayer.Instance.StartDialogue(dialogue);
-            }
+            TriggerDialogue();
             
+        }
+    }
+
+    public void TriggerDialogue()
+    {
+        if (!DialoguePlayer.Instance.isPlayingDialogue)
+        {
+            DialoguePlayer.Instance.StartDialogue(dialogue);
         }
     }
 }
