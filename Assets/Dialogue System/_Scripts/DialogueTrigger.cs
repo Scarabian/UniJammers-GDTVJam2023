@@ -66,7 +66,6 @@ public class DialogueTrigger : MonoBehaviour
         switch (sequenceBehavior)
         {
             case SequenceBehavior.Repeat:
-                return;
                 break;
             case SequenceBehavior.Next:
                 dialogueIndexToPlay = (dialogueIndexToPlay < dialogues.Length - 1) ? dialogueIndexToPlay + 1 : dialogueIndexToPlay;
