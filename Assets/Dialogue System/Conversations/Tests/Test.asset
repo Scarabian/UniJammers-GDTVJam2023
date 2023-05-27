@@ -14,13 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   conversation:
   - actor: {fileID: 11400000, guid: 50d274544557c1a4692e52058b6616ea, type: 2}
-    text: First
+    text: First, this is a really long message so that Astrydax can do some testing
+      on how the dialogue system works.
   - actor: {fileID: 11400000, guid: 6fc84ade4ecbf0040bb62bc0e875bcb8, type: 2}
-    text: Hello I am the player
+    text: First, this is a really long message so that Astrydax can do some testing
+      on how the dialogue system works.
   - actor: {fileID: 11400000, guid: 50d274544557c1a4692e52058b6616ea, type: 2}
-    text: Save us from the shades!
+    text: First, this is a really long message so that Astrydax can do some testing
+      on how the dialogue system works.
   - actor: {fileID: 11400000, guid: 6fc84ade4ecbf0040bb62bc0e875bcb8, type: 2}
-    text: I'll get right on that
+    text: First, this is a really long message so that Astrydax can do some testing
+      on how the dialogue system works.
   hasFinished: 1
   itemsToDropOnFinish:
   - {fileID: 6509949416693082091, guid: 68344d9df7eb4f1488661ce360daa7bc, type: 3}

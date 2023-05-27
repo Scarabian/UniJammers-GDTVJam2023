@@ -30,6 +30,8 @@ public class DialoguePlayer : MonoBehaviour
     [SerializeField] private float volume = 0.02f;
     [SerializeField] private AudioClip[] dialogueTypingSoundClips;
     [SerializeField] private bool stopAudioSource;
+    [SerializeField] private bool makePredictable;
+
     [Range(1,5)]
     [SerializeField] private int characterFrequency = 2;
     [Range(-3, 3)]
@@ -127,7 +129,7 @@ public class DialoguePlayer : MonoBehaviour
 
         foreach(char letter in line.ToCharArray())
         {            
-            PlayDialogueSounds(speechText.text.Length);
+            PlayDialogueSounds(speechText.text.Length, letter);
             speechText.text += letter;
             yield return StartCoroutine(CoroutineUtil.WaitForRealSeconds(textSpeed));
         }
@@ -136,20 +138,48 @@ public class DialoguePlayer : MonoBehaviour
         arrowIcon.SetActive(true);
     }
 
-    private void PlayDialogueSounds(int currentDisplayedCharacterCount)
+    private void PlayDialogueSounds(int currentDisplayedCharacterCount, char currentCharacter)
     {
-        if(currentDisplayedCharacterCount % characterFrequency == 0)
+        audioSource.volume = volume;
+        if (currentDisplayedCharacterCount % characterFrequency == 0)
         {
+            AudioClip soundClip = null;
             if (stopAudioSource)
             {
                 audioSource.Stop();
             }
-            audioSource.volume = volume;
 
-            int randomIndex = Random.Range(0, dialogueTypingSoundClips.Length);
-            AudioClip soundClip = dialogueTypingSoundClips[randomIndex];
+            if(makePredictable)
+            {
+                int hashCode = currentCharacter.GetHashCode();
 
-            audioSource.pitch = Random.Range(minPitch,maxPitch);
+                int predictableIndex = hashCode % dialogueTypingSoundClips.Length;
+                soundClip = dialogueTypingSoundClips[predictableIndex];
+
+                int minPitchInt = (int)(minPitch * 100);
+                int maxPitchInt = (int)(maxPitch * 100);
+                int pitchRangeInt = maxPitchInt = minPitchInt;
+                if(pitchRangeInt != 0)
+                {
+                    int predictablePitchInt = (hashCode % pitchRangeInt) + minPitchInt;
+                    float predictablePitch = predictablePitchInt/ 100f;
+                    audioSource.pitch = predictablePitch;
+                }
+                else
+                {
+                    audioSource.pitch = minPitch;
+                }
+            }
+            else
+            {
+                int randomIndex = Random.Range(0, dialogueTypingSoundClips.Length);
+                soundClip = dialogueTypingSoundClips[randomIndex];
+                audioSource.pitch = Random.Range(minPitch, maxPitch);
+            }
+
+
+            
+            
             audioSource.PlayOneShot(soundClip);
         }
     }
