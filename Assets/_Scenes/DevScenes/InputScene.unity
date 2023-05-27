@@ -4522,12 +4522,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725379fc85fb9b84da27ebde1b4a0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textSpeed: 0.02
+  textSpeed: 0.44
+  audioVolume: 0.02
   dialogueBox: {fileID: 1863091204}
   arrowIcon: {fileID: 6818926505085719633}
-  isPlayingDialogue: 0
   nameText: {fileID: 1679588739}
   speechText: {fileID: 1695720135}
+  dialogueTypingSoundClip: {fileID: 8300000, guid: 34fb0953ee7451a4398aaa14119c66ee,
+    type: 3}
 --- !u!4 &1126150297
 Transform:
   m_ObjectHideFlags: 0

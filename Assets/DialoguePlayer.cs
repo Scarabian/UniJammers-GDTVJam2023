@@ -12,6 +12,9 @@ public class DialoguePlayer : MonoBehaviour
     [Header("Settings")]
     [SerializeField]
     private float textSpeed = 0.02f;
+    [SerializeField]
+    private float audioVolume = 0.02f;
+
 
     [Header("References")]
     [SerializeField]
@@ -22,6 +25,13 @@ public class DialoguePlayer : MonoBehaviour
     private TextMeshProUGUI nameText;
     [SerializeField]
     private TextMeshProUGUI speechText;
+
+
+    [Header("Audio")]
+    [SerializeField]
+    private AudioClip dialogueTypingSoundClip;
+
+    private AudioSource audioSource;
 
 
     //Flags 
@@ -51,6 +61,9 @@ public class DialoguePlayer : MonoBehaviour
         {
             Instance = this;
         }
+
+        audioSource = this.gameObject.AddComponent<AudioSource>();
+        audioSource.volume = audioVolume;
     }
 
 
@@ -107,6 +120,7 @@ public class DialoguePlayer : MonoBehaviour
         foreach(char letter in line.ToCharArray())
         {            
             speechText.text += letter;
+            audioSource.PlayOneShot(dialogueTypingSoundClip);
             yield return StartCoroutine(CoroutineUtil.WaitForRealSeconds(textSpeed));
         }
 
