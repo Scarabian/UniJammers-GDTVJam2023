@@ -95,12 +95,7 @@ public class DialoguePlayer : MonoBehaviour
         speechText.text = "";
 
         foreach(char letter in line.ToCharArray())
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                speechText.text = line;
-                break;
-            }
+        {            
             speechText.text += letter;
             yield return StartCoroutine(CoroutineUtil.WaitForRealSeconds(textSpeed));
         }
