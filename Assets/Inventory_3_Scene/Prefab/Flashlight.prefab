@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1265913941769442100}
   - component: {fileID: 8448288817417742584}
   - component: {fileID: 2018393030980914831}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 8180994460226728632}
   - component: {fileID: 3175479775490111388}
   - component: {fileID: 1945250438862258317}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

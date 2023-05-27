@@ -64,6 +64,15 @@ namespace uj.input.actions
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""136f2058-e894-481a-9eec-ad0925fb0122"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -202,11 +211,22 @@ namespace uj.input.actions
                 {
                     ""name"": """",
                     ""id"": ""971bf1cb-579d-4d64-b7de-21984154b5d6"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7763ddb-e090-431e-9630-3e9beaef2604"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -221,6 +241,7 @@ namespace uj.input.actions
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
             m_Player_SwitchCamera = m_Player.FindAction("SwitchCamera", throwIfNotFound: true);
+            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -286,6 +307,7 @@ namespace uj.input.actions
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_PauseGame;
         private readonly InputAction m_Player_SwitchCamera;
+        private readonly InputAction m_Player_Interact;
         public struct PlayerActions
         {
             private @InputActions m_Wrapper;
@@ -294,6 +316,7 @@ namespace uj.input.actions
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
             public InputAction @SwitchCamera => m_Wrapper.m_Player_SwitchCamera;
+            public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -315,6 +338,9 @@ namespace uj.input.actions
                 @SwitchCamera.started += instance.OnSwitchCamera;
                 @SwitchCamera.performed += instance.OnSwitchCamera;
                 @SwitchCamera.canceled += instance.OnSwitchCamera;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -331,6 +357,9 @@ namespace uj.input.actions
                 @SwitchCamera.started -= instance.OnSwitchCamera;
                 @SwitchCamera.performed -= instance.OnSwitchCamera;
                 @SwitchCamera.canceled -= instance.OnSwitchCamera;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -354,6 +383,7 @@ namespace uj.input.actions
             void OnLook(InputAction.CallbackContext context);
             void OnPauseGame(InputAction.CallbackContext context);
             void OnSwitchCamera(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
         }
     }
 }
