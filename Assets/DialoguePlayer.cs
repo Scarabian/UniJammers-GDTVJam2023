@@ -5,15 +5,13 @@ using UnityEngine;
 using TMPro;
 using TMPro.EditorUtilities;
 using uj.GameManagement;
-using System;
+//using System;
 
 public class DialoguePlayer : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField]
-    private float textSpeed = 0.02f;
-    [SerializeField]
-    private float audioVolume = 0.02f;
+    private float textSpeed = 0.02f;    
 
 
     [Header("References")]
@@ -28,9 +26,18 @@ public class DialoguePlayer : MonoBehaviour
 
 
     [Header("Audio")]
-    [SerializeField]
-    private AudioClip dialogueTypingSoundClip;
+    [Range(0, 1)]
+    [SerializeField] private float volume = 0.02f;
+    [SerializeField] private AudioClip[] dialogueTypingSoundClips;
     [SerializeField] private bool stopAudioSource;
+    [Range(1,5)]
+    [SerializeField] private int characterFrequency = 2;
+    [Range(-3, 3)]
+    [SerializeField] private float minPitch = 0.5f;
+    [Range(-3, 3)]
+    [SerializeField] private float maxPitch = 3f;
+
+
     private AudioSource audioSource;
     
 
@@ -64,7 +71,7 @@ public class DialoguePlayer : MonoBehaviour
         }
 
         audioSource = this.gameObject.AddComponent<AudioSource>();
-        audioSource.volume = audioVolume;
+        
     }
 
 
@@ -131,13 +138,19 @@ public class DialoguePlayer : MonoBehaviour
 
     private void PlayDialogueSounds(int currentDisplayedCharacterCount)
     {
-        if(currentDisplayedCharacterCount % 2 == 0)
+        if(currentDisplayedCharacterCount % characterFrequency == 0)
         {
             if (stopAudioSource)
             {
                 audioSource.Stop();
             }
-            audioSource.PlayOneShot(dialogueTypingSoundClip);
+            audioSource.volume = volume;
+
+            int randomIndex = Random.Range(0, dialogueTypingSoundClips.Length);
+            AudioClip soundClip = dialogueTypingSoundClips[randomIndex];
+
+            audioSource.pitch = Random.Range(minPitch,maxPitch);
+            audioSource.PlayOneShot(soundClip);
         }
     }
 

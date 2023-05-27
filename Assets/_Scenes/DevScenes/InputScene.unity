@@ -4527,11 +4527,16 @@ MonoBehaviour:
   arrowIcon: {fileID: 6818926505085719633}
   nameText: {fileID: 1679588739}
   speechText: {fileID: 1695720135}
-  audioVolume: 0.294
-  dialogueTypingSoundClip: {fileID: 8300000, guid: 340418ebf0ab4bc4ab7507c13dae6925,
-    type: 3}
+  volume: 0.02
+  dialogueTypingSoundClips:
+  - {fileID: 8300000, guid: 34fb0953ee7451a4398aaa14119c66ee, type: 3}
+  - {fileID: 8300000, guid: 340418ebf0ab4bc4ab7507c13dae6925, type: 3}
+  - {fileID: 8300000, guid: 0304325a136652346a6d374bf58b0647, type: 3}
+  - {fileID: 8300000, guid: e6411710b928ac749b193fe1edc95ce9, type: 3}
   stopAudioSource: 1
   characterFrequency: 2
+  minPitch: 0.5
+  maxPitch: 3
 --- !u!4 &1126150297
 Transform:
   m_ObjectHideFlags: 0
