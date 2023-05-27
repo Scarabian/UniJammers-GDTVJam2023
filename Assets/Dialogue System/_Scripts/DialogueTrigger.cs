@@ -27,7 +27,7 @@ public class DialogueTrigger : MonoBehaviour
     //Play whatever dialogue the dialogueIndexToPlay is pointing to
     public void TriggerDialogue()        
     {
-        if (!DialoguePlayer.Instance.isPlayingDialogue)
+        if (!DialoguePlayer.Instance.GetIsPlayingDialogue())
         {
             DialoguePlayer.Instance.StartDialogue(dialogues[dialogueIndexToPlay], this);
         }
@@ -37,7 +37,7 @@ public class DialogueTrigger : MonoBehaviour
     //Use this public method to manually play a known index from code
     public void TriggerDialogue(int idx)
     {
-        if (!DialoguePlayer.Instance.isPlayingDialogue)
+        if (!DialoguePlayer.Instance.GetIsPlayingDialogue())
         {
             DialoguePlayer.Instance.StartDialogue(dialogues[idx], this);
         }

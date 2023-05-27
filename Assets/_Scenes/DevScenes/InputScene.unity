@@ -2621,7 +2621,7 @@ PrefabInstance:
     - target: {fileID: -836605925910203142, guid: 2caf2b8414ac0c3428c3c2165d0f5e10,
         type: 3}
       propertyPath: dialogues.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -836605925910203142, guid: 2caf2b8414ac0c3428c3c2165d0f5e10,
         type: 3}
@@ -6209,10 +6209,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725379fc85fb9b84da27ebde1b4a0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textSpeed: 0.04
   dialogueBox: {fileID: 1863091204}
-  isPlayingDialogue: 0
+  arrowIcon: {fileID: 6818926505085719633}
   nameText: {fileID: 1679588739}
   speechText: {fileID: 1695720135}
+  volume: 0.02
+  dialogueTypingSoundClips:
+  - {fileID: 8300000, guid: 34fb0953ee7451a4398aaa14119c66ee, type: 3}
+  - {fileID: 8300000, guid: 340418ebf0ab4bc4ab7507c13dae6925, type: 3}
+  - {fileID: 8300000, guid: 0304325a136652346a6d374bf58b0647, type: 3}
+  - {fileID: 8300000, guid: e6411710b928ac749b193fe1edc95ce9, type: 3}
+  stopAudioSource: 1
+  makePredictable: 0
+  characterFrequency: 2
+  minPitch: 0.5
+  maxPitch: 3
 --- !u!4 &1126150297
 Transform:
   m_ObjectHideFlags: 0
@@ -8289,7 +8301,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -703.9, y: 0}
-  m_SizeDelta: {x: 1405, y: 1080}
+  m_SizeDelta: {x: 1400, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1494026405
 MonoBehaviour:
@@ -11876,26 +11888,48 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1551043363907392368, guid: b2e8511348bcc8541b20028e18b12160,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551043363907392368, guid: b2e8511348bcc8541b20028e18b12160,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551043363907392368, guid: b2e8511348bcc8541b20028e18b12160,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551043363907392368, guid: b2e8511348bcc8541b20028e18b12160,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4604200922462822797, guid: b2e8511348bcc8541b20028e18b12160,
         type: 3}
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
-    - target: {fileID: 4604200922462822797, guid: b2e8511348bcc8541b20028e18b12160,
+    - target: {fileID: 7408720222618457956, guid: b2e8511348bcc8541b20028e18b12160,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Name
+      value: ArrowIcon
       objectReference: {fileID: 0}
-    - target: {fileID: 8751940024556844542, guid: b2e8511348bcc8541b20028e18b12160,
-        type: 3}
-      propertyPath: m_text
-      value: Johnny
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8375827804626795279, guid: b2e8511348bcc8541b20028e18b12160, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2e8511348bcc8541b20028e18b12160, type: 3}
+--- !u!1 &6818926505085719633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7408720222618457956, guid: b2e8511348bcc8541b20028e18b12160,
+    type: 3}
+  m_PrefabInstance: {fileID: 6818926505085719632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7728041568457079171
 PrefabInstance:
   m_ObjectHideFlags: 0
