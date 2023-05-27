@@ -11,10 +11,10 @@ TagManager:
   - 
   - Water
   - UI
-  - PPCamLayer
-  - TDCamLayer
-  - 
-  - 
+  - FPObjectsOnly
+  - TDObjectsOnly
+  - CineFirstPerson
+  - CineTopDown
   - 
   - 
   - 
