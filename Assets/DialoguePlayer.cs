@@ -9,14 +9,21 @@ using System;
 
 public class DialoguePlayer : MonoBehaviour
 {
+    [SerializeField]
+    private float textSpeed = 0.05f;
 
 
     [SerializeField]
     private GameObject dialogueBox;
+    [SerializeField]
+    private GameObject arrowIcon;
 
     public bool isPlayingDialogue = false;
 
     private DialogueSO currentDialogue;
+    private Coroutine displayLineCoroutine;
+    private bool canContinueToNextLine = false;
+
     private int conversationIdx = -1;
     [SerializeField]
     private TextMeshProUGUI nameText;
@@ -49,7 +56,7 @@ public class DialoguePlayer : MonoBehaviour
         if (!isPlayingDialogue) return;
 
         //TODO replace this with new input system
-        if(Input.GetKeyDown(KeyCode.Space)) 
+        if(canContinueToNextLine && Input.GetKeyDown(KeyCode.Space)) 
         {
             StepConversation();
         }
@@ -62,7 +69,7 @@ public class DialoguePlayer : MonoBehaviour
     {
         if(dialogue.conversation.Length < 1)
         {
-            Debug.LogWarning("conversation has a count of 0. Please make sure to populate dialogue");
+            Debug.LogWarning("conversation has a length of 0. Please make sure to populate dialogue");
             return;
         }
         if(isPlayingDialogue)
@@ -81,6 +88,27 @@ public class DialoguePlayer : MonoBehaviour
         }
     }
 
+    private IEnumerator DisplayLine(string line)
+    {
+        canContinueToNextLine = false;
+        arrowIcon.SetActive(false);
+        speechText.text = "";
+
+        foreach(char letter in line.ToCharArray())
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                speechText.text = line;
+                break;
+            }
+            speechText.text += letter;
+            yield return StartCoroutine(CoroutineUtil.WaitForRealSeconds(textSpeed));
+        }
+
+        canContinueToNextLine = true;
+        arrowIcon.SetActive(true);
+    }
+
     //increments the conversation index and populates the UI, or if at the end of the conversation, it will finish it.
     private void StepConversation()
     {
@@ -89,7 +117,13 @@ public class DialoguePlayer : MonoBehaviour
             conversationIdx++;
             nameText.text = currentDialogue.conversation[conversationIdx].actor.actorName;
             nameText.color = currentDialogue.conversation[conversationIdx].actor.color;
-            speechText.text = currentDialogue.conversation[conversationIdx].text;
+
+            //speechText.text = currentDialogue.conversation[conversationIdx].text;
+            if(displayLineCoroutine != null)
+            {
+                StopCoroutine(displayLineCoroutine);
+            }
+            displayLineCoroutine = StartCoroutine(DisplayLine(currentDialogue.conversation[conversationIdx].text));
 
         }
         else
@@ -109,5 +143,23 @@ public class DialoguePlayer : MonoBehaviour
         GameManager.Instance.UnsuspendGame();
         currentDialogue = null;
 
+    }
+}
+
+
+/// <summary>
+///  Since the time scale is zero when we suspend the game, a normal coroutine will never finish yielding
+///  for seconds. To get around this we'll use a custom coroutine utility to wait for real word time
+///  independent of the game time.///  
+/// </summary>
+public static class CoroutineUtil
+{
+    public static IEnumerator WaitForRealSeconds(float time)
+    {
+        float start = Time.realtimeSinceStartup;
+        while (Time.realtimeSinceStartup < start + time)
+        {
+            yield return null;
+        }
     }
 }

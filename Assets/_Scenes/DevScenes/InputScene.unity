@@ -4522,7 +4522,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725379fc85fb9b84da27ebde1b4a0d48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textSpeed: 0.02
   dialogueBox: {fileID: 1863091204}
+  arrowIcon: {fileID: 6818926505085719633}
   isPlayingDialogue: 0
   nameText: {fileID: 1679588739}
   speechText: {fileID: 1695720135}
@@ -9329,26 +9331,48 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1551043363907392368, guid: b2e8511348bcc8541b20028e18b12160,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551043363907392368, guid: b2e8511348bcc8541b20028e18b12160,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551043363907392368, guid: b2e8511348bcc8541b20028e18b12160,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1551043363907392368, guid: b2e8511348bcc8541b20028e18b12160,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4604200922462822797, guid: b2e8511348bcc8541b20028e18b12160,
         type: 3}
       propertyPath: m_Name
       value: DialogueBox
       objectReference: {fileID: 0}
-    - target: {fileID: 4604200922462822797, guid: b2e8511348bcc8541b20028e18b12160,
+    - target: {fileID: 7408720222618457956, guid: b2e8511348bcc8541b20028e18b12160,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_Name
+      value: ArrowIcon
       objectReference: {fileID: 0}
-    - target: {fileID: 8751940024556844542, guid: b2e8511348bcc8541b20028e18b12160,
-        type: 3}
-      propertyPath: m_text
-      value: Johnny
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8375827804626795279, guid: b2e8511348bcc8541b20028e18b12160, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2e8511348bcc8541b20028e18b12160, type: 3}
+--- !u!1 &6818926505085719633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7408720222618457956, guid: b2e8511348bcc8541b20028e18b12160,
+    type: 3}
+  m_PrefabInstance: {fileID: 6818926505085719632}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7728041568457079171
 PrefabInstance:
   m_ObjectHideFlags: 0
