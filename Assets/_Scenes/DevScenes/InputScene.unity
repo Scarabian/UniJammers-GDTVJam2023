@@ -4762,13 +4762,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8568a3741e799844abe9bf18ea3deb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fPCam: {fileID: 0}
+  fPCam: {fileID: 900142934}
   tDCam: {fileID: 330585545}
   smallScreenRawImage: {fileID: 1160142503}
-  largeSCreenRawImage: {fileID: 1494026405}
-  rightCameraUI: {fileID: 0}
-  lightBar: {fileID: 0}
-  healthBar: {fileID: 0}
+  largeScreenRawImage: {fileID: 1494026405}
+  monoMaterial: {fileID: 2100000, guid: ba77baa19a324cb469e00e7d3fec99a4, type: 2}
+  rightCameraUI: {fileID: 1647400993}
+  lightBar: {fileID: 1991255604}
+  healthBar: {fileID: 653499331}
   playerMovement: {fileID: 0}
   isLightMode: 0
 --- !u!1 &909848201
@@ -6351,7 +6352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: ba77baa19a324cb469e00e7d3fec99a4, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}

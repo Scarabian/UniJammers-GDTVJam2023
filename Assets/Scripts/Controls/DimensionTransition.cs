@@ -8,7 +8,8 @@ public class RenderTextureSwitcher : MonoBehaviour
     [SerializeField] private Camera fPCam;   //first parent camera selectebale
     [SerializeField] private Camera tDCam;   //Top Down camera selectable
     [SerializeField] private RawImage smallScreenRawImage;  // RawImage component to display the camera output
-    [SerializeField] private RawImage largeSCreenRawImage;  // RawImage component to display the camera output
+    [SerializeField] private RawImage largeScreenRawImage;  // RawImage component to display the camera output
+    [SerializeField] private Material monoMaterial; // image compnent to apply to the mono camera
     private bool isDull = false;
 
     InputReader inputReader;
@@ -34,7 +35,7 @@ public class RenderTextureSwitcher : MonoBehaviour
 
         }
 
-        if (smallScreenRawImage == null || largeSCreenRawImage == null)
+        if (smallScreenRawImage == null || largeScreenRawImage == null)
         {
             Debug.LogError("An image is not assigned");
             return;
@@ -72,13 +73,18 @@ public class RenderTextureSwitcher : MonoBehaviour
         {
             isLightMode = false;
             smallScreenRawImage.texture = tDCam.targetTexture;
-            largeSCreenRawImage.texture = fPCam.targetTexture;
+            largeScreenRawImage.texture = fPCam.targetTexture;
+            smallScreenRawImage.material = null;
+            largeScreenRawImage.material = monoMaterial;
+           // Debug.Log("Materialbefore " + largeScreenRawImage.material)
         }
         else
         {
             isLightMode = true;
             smallScreenRawImage.texture = fPCam.targetTexture;
-            largeSCreenRawImage.texture = tDCam.targetTexture;
+            largeScreenRawImage.texture = tDCam.targetTexture;
+            largeScreenRawImage.material = null;
+            smallScreenRawImage.material = monoMaterial;
         }
 
         toggleIsDull();
@@ -132,7 +138,7 @@ public class RenderTextureSwitcher : MonoBehaviour
         {
             SwitchUI();
             smallScreenRawImage.texture = fPCam.targetTexture;
-            largeSCreenRawImage.texture = tDCam.targetTexture;
+            largeScreenRawImage.texture = tDCam.targetTexture;
             isLightMode = true;
         }
     }
