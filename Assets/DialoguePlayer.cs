@@ -30,8 +30,9 @@ public class DialoguePlayer : MonoBehaviour
     [Header("Audio")]
     [SerializeField]
     private AudioClip dialogueTypingSoundClip;
-
+    [SerializeField] private bool stopAudioSource;
     private AudioSource audioSource;
+    
 
 
     //Flags 
@@ -119,13 +120,25 @@ public class DialoguePlayer : MonoBehaviour
 
         foreach(char letter in line.ToCharArray())
         {            
+            PlayDialogueSounds(speechText.text.Length);
             speechText.text += letter;
-            audioSource.PlayOneShot(dialogueTypingSoundClip);
             yield return StartCoroutine(CoroutineUtil.WaitForRealSeconds(textSpeed));
         }
 
         canContinueToNextLine = true;
         arrowIcon.SetActive(true);
+    }
+
+    private void PlayDialogueSounds(int currentDisplayedCharacterCount)
+    {
+        if(currentDisplayedCharacterCount % 2 == 0)
+        {
+            if (stopAudioSource)
+            {
+                audioSource.Stop();
+            }
+            audioSource.PlayOneShot(dialogueTypingSoundClip);
+        }
     }
 
     //increments the conversation index and populates the UI, or if at the end of the conversation, it will finish it.
