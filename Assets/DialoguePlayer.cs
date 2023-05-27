@@ -9,26 +9,31 @@ using System;
 
 public class DialoguePlayer : MonoBehaviour
 {
+    [Header("Settings")]
     [SerializeField]
-    private float textSpeed = 0.05f;
+    private float textSpeed = 0.02f;
 
-
+    [Header("References")]
     [SerializeField]
     private GameObject dialogueBox;
     [SerializeField]
     private GameObject arrowIcon;
-
-    public bool isPlayingDialogue = false;
-
-    private DialogueSO currentDialogue;
-    private Coroutine displayLineCoroutine;
-    private bool canContinueToNextLine = false;
-
-    private int conversationIdx = -1;
     [SerializeField]
     private TextMeshProUGUI nameText;
     [SerializeField]
     private TextMeshProUGUI speechText;
+
+
+    //Flags 
+    private bool isPlayingDialogue  = false;
+    private bool canContinueToNextLine = false;
+
+    //Dialogue refs
+    private DialogueSO currentDialogue;
+    private int conversationIdx = -1;
+    private Coroutine displayLineCoroutine;
+
+
 
     //this is super ugly and I should propbably just be using events instead of a callback structure
     private DialogueTrigger triggerThatStartedDialogue;
@@ -62,6 +67,11 @@ public class DialoguePlayer : MonoBehaviour
         }
 
 
+    }
+
+    public bool GetIsPlayingDialogue()
+    {
+        return isPlayingDialogue;
     }
 
     //Starts the dialogue playback loop with a reference to the DialogueTrigger instance that called it.
