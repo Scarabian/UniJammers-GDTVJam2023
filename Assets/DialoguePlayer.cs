@@ -28,17 +28,8 @@ public class DialoguePlayer : MonoBehaviour
     [Header("Audio")]
     [Range(0, 1)]
     [SerializeField] private float volume = 0.02f;
-    [SerializeField] private AudioClip[] dialogueTypingSoundClips;
-    [SerializeField] private bool stopAudioSource;
     [SerializeField] private bool makePredictable;
-
-    [Range(1,5)]
-    [SerializeField] private int characterFrequency = 2;
-    [Range(-3, 3)]
-    [SerializeField] private float minPitch = 0.5f;
-    [Range(-3, 3)]
-    [SerializeField] private float maxPitch = 3f;
-
+    [SerializeField] private AudioClip defaultAudioClip;
 
     private AudioSource audioSource;
     
@@ -140,6 +131,20 @@ public class DialoguePlayer : MonoBehaviour
 
     private void PlayDialogueSounds(int currentDisplayedCharacterCount, char currentCharacter)
     {
+        DialogueActorSO currentActor = currentDialogue.conversation[conversationIdx].actor;
+
+        AudioClip[] dialogueTypingSoundClips = currentActor.dialogueTypingSoundClips;
+        if(dialogueTypingSoundClips.Length < 1)
+        {
+            Debug.LogWarning("make sure to set at least 1 audio clip for: " + currentActor.actorName);
+            dialogueTypingSoundClips = new AudioClip[] {defaultAudioClip};
+        }
+        int characterFrequency = currentActor.characterFrequency;
+        float minPitch = currentActor.minPitch;
+        float maxPitch = currentActor.maxPitch;
+        bool stopAudioSource = currentActor.stopAudioSource;
+
+
         audioSource.volume = volume;
         if (currentDisplayedCharacterCount % characterFrequency == 0)
         {
