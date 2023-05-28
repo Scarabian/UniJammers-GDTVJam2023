@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1830a705d9b57be438b05461d63e358d, type: 3}
+  m_Name: Conversation
+  m_EditorClassIdentifier: 
+  conversation:
+  - actor: {fileID: 11400000, guid: 94f2d5acb0af7a344b055cc9e03a02eb, type: 2}
+    text: This is a test, I am dropping a dark heart after this
+  hasFinished: 0
+  itemsToDropOnFinish:
+  - {fileID: 919132149155446097, guid: 54ec46554af43b94fa95329343dcd505, type: 3}
