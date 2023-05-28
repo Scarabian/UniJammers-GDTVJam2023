@@ -4,8 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 using TMPro.EditorUtilities;
-using uj.GameManagement;
-//using System;
 
 public class DialoguePlayer : MonoBehaviour
 {
@@ -105,7 +103,7 @@ public class DialoguePlayer : MonoBehaviour
         {
             triggerThatStartedDialogue= caller;
             isPlayingDialogue= true;
-            GameManager.Instance.SuspendGame();
+            SuspendGame();
             currentDialogue = dialogue;
             dialogueBox.SetActive(true);
             StepConversation();
@@ -220,9 +218,19 @@ public class DialoguePlayer : MonoBehaviour
         currentDialogue.hasFinished = true;
         conversationIdx = -1;
         dialogueBox.SetActive(false);
-        GameManager.Instance.UnsuspendGame();
+        UnsuspendGame();
         currentDialogue = null;
 
+    }
+
+    public void SuspendGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void UnsuspendGame()
+    {
+        Time.timeScale = 1;
     }
 }
 

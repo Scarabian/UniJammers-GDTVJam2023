@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1830a705d9b57be438b05461d63e358d, type: 3}
-  m_Name: Test 4
+  m_Name: Conversation 2
   m_EditorClassIdentifier: 
   conversation:
-  - actor: {fileID: 11400000, guid: 6fc84ade4ecbf0040bb62bc0e875bcb8, type: 2}
-    text: I'm the 4th
-  - actor: {fileID: 11400000, guid: f90de61be593f0345992e495868990d6, type: 2}
-    text: indeed you are
+  - actor: {fileID: 11400000, guid: 94f2d5acb0af7a344b055cc9e03a02eb, type: 2}
+    text: I'm not dropping anything this time
   hasFinished: 0
   itemsToDropOnFinish: []

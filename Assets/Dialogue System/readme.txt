@@ -3,7 +3,7 @@ To use Dialogue System.
 1. Create actors 
 	Go to actors folder --> Right Click --> Create --> Dialogue --> Actor
 
-2. Choose a Name and Color for the Actor
+2. Choose a Name and Color for the Actor, audio settings are optional and will default if empty
 
 3. Create Dialogue
 	Go to Conversatiosn folder --> Right Click --> Create --> Dialogue --> Conversation
