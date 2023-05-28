@@ -5,5 +5,5 @@ using System;
 using System.Collections;
 
 [Serializable]
-public class DialogueEvents : UnityEvent<DialogueSO> { }
+public class DialogueEvents : UnityEvent<DialogueSO, GameObject, DialogueTrigger> { }
 

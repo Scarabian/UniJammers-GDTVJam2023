@@ -35,6 +35,11 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+    public int GetDialogueIndexToPlay()
+    {
+        return dialogueIndexToPlay;
+    }
+
 
     //Use this public method to manually play a known index from code
     public void TriggerDialogue(int idx)
@@ -48,11 +53,13 @@ public class DialogueTrigger : MonoBehaviour
     //Called by DialoguePlayer singleton when dialogue has finished on the object that originally started the dialogue
     public void OnFinishedDialogue(DialogueSO dialogue)
     {
+        //doesn't do anything on its own, can be expanded later to change playback functionality
+        dialogue.hasFinished = true;
 
-
-        OnFinish.Invoke(dialogue);
+        OnFinish.Invoke(dialogue, this.gameObject, this);
 
         HandleSequence();
+
     }
 
     //Handles what dialogue should be played next
