@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1830a705d9b57be438b05461d63e358d, type: 3}
-  m_Name: Test 3
+  m_Name: Conversation 1
   m_EditorClassIdentifier: 
   conversation:
-  - actor: {fileID: 11400000, guid: 50d274544557c1a4692e52058b6616ea, type: 2}
-    text: I'm the 3rd
-  - actor: {fileID: 11400000, guid: 795fbb5b8cc4cd0469d6ba8e0f06ddc8, type: 2}
-    text: no i'm the 3rd
-  - actor: {fileID: 11400000, guid: f90de61be593f0345992e495868990d6, type: 2}
-    text: actually i'm the third
+  - actor: {fileID: 11400000, guid: 94f2d5acb0af7a344b055cc9e03a02eb, type: 2}
+    text: This time I will be dropping a staff
   hasFinished: 0
   itemsToDropOnFinish:
-  - {fileID: 1677522976173553459, guid: 16129a5679a46c942929e3af4274aa0f, type: 3}
+  - {fileID: 6509949416693082091, guid: d4543ee637037ce42a3a64297e358cb2, type: 3}

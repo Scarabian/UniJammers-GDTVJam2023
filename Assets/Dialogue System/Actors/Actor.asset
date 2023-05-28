@@ -10,7 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 000eb48999b9e2d48965150e8834c1cb, type: 3}
-  m_Name: The Miller
+  m_Name: Actor
   m_EditorClassIdentifier: 
-  actorName: The Miller
-  color: {r: 0.2141887, g: 0.30712652, b: 0.31132078, a: 1}
+  actorName: John
+  color: {r: 1, g: 0.08018869, b: 0.08018869, a: 1}
+  dialogueTypingSoundClips: []
+  stopAudioSource: 0
+  characterFrequency: 2
+  minPitch: 1.43
+  maxPitch: 3
