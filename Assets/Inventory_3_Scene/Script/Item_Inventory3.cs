@@ -15,9 +15,10 @@ public class Item_Inventory3 : MonoBehaviour
     private GameObject itemPrefabDull;
 
     private InventoryManager inventoryManager;
-    // Start is called before the first frame update
+
     private void Awake() 
     {
+        //Get Data Reference and set it to the empty items
         itemName = items_SO.itemName;
         itemSprite = items_SO.itemSprite;
         itemNameDull = items_SO.itemNameDull;
@@ -26,6 +27,7 @@ public class Item_Inventory3 : MonoBehaviour
         itemPrefab = items_SO.itemPrefab;
         itemPrefabDull = items_SO.itemPrefabDull;
     }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -34,8 +36,10 @@ public class Item_Inventory3 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
+        //Check if the tag is the Player
         if(other.tag == "Player")
         {
+            //Add the items referenced in the awake to the manager
             int leftOverItems = inventoryManager.AddItem(itemQuantiy, itemName, itemSprite, itemPrefab, itemNameDull, itemSpriteDull, itemPrefabDull);
 
             if(leftOverItems <= 0)

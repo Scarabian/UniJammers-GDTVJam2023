@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10781d70121ac7c49acbead209edb9c6, type: 3}
   m_Name: Lighter
   m_EditorClassIdentifier: 
-  itemName: Ligther
+  itemName: Lighter
   itemSprite: {fileID: 21300000, guid: d5e68cea508f3e44fbdedca65203bfad, type: 3}
   itemPrefab: {fileID: 6509949416693082091, guid: 68344d9df7eb4f1488661ce360daa7bc,
     type: 3}
