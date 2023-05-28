@@ -131,7 +131,7 @@ public class RenderTextureSwitcher : MonoBehaviour
         //In Dull Dimension 
         if(!isLightMode && playerMovement.playerCurrentLight > 0 )
         {
-            playerMovement.playerCurrentLight -= Time.deltaTime;
+            //playerMovement.playerCurrentLight -= Time.deltaTime;
         }
         else
         {
