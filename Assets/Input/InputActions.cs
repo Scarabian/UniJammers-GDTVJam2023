@@ -64,6 +64,24 @@ namespace uj.input.actions
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""136f2058-e894-481a-9eec-ad0925fb0122"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""989bad4d-d88f-458c-ac38-f51fa6f541b4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -168,8 +186,30 @@ namespace uj.input.actions
                 },
                 {
                     ""name"": """",
+                    ""id"": ""ff652042-a945-44ae-9107-9a1cdae90c0d"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""8e74dba4-6a87-4892-9a43-6a06fa2f8b78"",
                     ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0b6f820-89a3-47df-9ef6-2c7105539f16"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -202,11 +242,33 @@ namespace uj.input.actions
                 {
                     ""name"": """",
                     ""id"": ""971bf1cb-579d-4d64-b7de-21984154b5d6"",
-                    ""path"": ""<Keyboard>/ctrl"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b7763ddb-e090-431e-9630-3e9beaef2604"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6aa7426d-7d4b-4cd6-994b-6c802e573ce6"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -221,6 +283,8 @@ namespace uj.input.actions
             m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
             m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
             m_Player_SwitchCamera = m_Player.FindAction("SwitchCamera", throwIfNotFound: true);
+            m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+            m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -286,6 +350,8 @@ namespace uj.input.actions
         private readonly InputAction m_Player_Look;
         private readonly InputAction m_Player_PauseGame;
         private readonly InputAction m_Player_SwitchCamera;
+        private readonly InputAction m_Player_Interact;
+        private readonly InputAction m_Player_Jump;
         public struct PlayerActions
         {
             private @InputActions m_Wrapper;
@@ -294,6 +360,8 @@ namespace uj.input.actions
             public InputAction @Look => m_Wrapper.m_Player_Look;
             public InputAction @PauseGame => m_Wrapper.m_Player_PauseGame;
             public InputAction @SwitchCamera => m_Wrapper.m_Player_SwitchCamera;
+            public InputAction @Interact => m_Wrapper.m_Player_Interact;
+            public InputAction @Jump => m_Wrapper.m_Player_Jump;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -315,6 +383,12 @@ namespace uj.input.actions
                 @SwitchCamera.started += instance.OnSwitchCamera;
                 @SwitchCamera.performed += instance.OnSwitchCamera;
                 @SwitchCamera.canceled += instance.OnSwitchCamera;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @Jump.started += instance.OnJump;
+                @Jump.performed += instance.OnJump;
+                @Jump.canceled += instance.OnJump;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -331,6 +405,12 @@ namespace uj.input.actions
                 @SwitchCamera.started -= instance.OnSwitchCamera;
                 @SwitchCamera.performed -= instance.OnSwitchCamera;
                 @SwitchCamera.canceled -= instance.OnSwitchCamera;
+                @Interact.started -= instance.OnInteract;
+                @Interact.performed -= instance.OnInteract;
+                @Interact.canceled -= instance.OnInteract;
+                @Jump.started -= instance.OnJump;
+                @Jump.performed -= instance.OnJump;
+                @Jump.canceled -= instance.OnJump;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -354,6 +434,8 @@ namespace uj.input.actions
             void OnLook(InputAction.CallbackContext context);
             void OnPauseGame(InputAction.CallbackContext context);
             void OnSwitchCamera(InputAction.CallbackContext context);
+            void OnInteract(InputAction.CallbackContext context);
+            void OnJump(InputAction.CallbackContext context);
         }
     }
 }
