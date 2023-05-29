@@ -10,7 +10,10 @@ public class RenderTextureSwitcher : MonoBehaviour
     [SerializeField] private RawImage smallScreenRawImage;  // RawImage component to display the camera output
     [SerializeField] private RawImage largeScreenRawImage;  // RawImage component to display the camera output
     [SerializeField] private Material monoMaterial; // image compnent to apply to the mono camera
+    [SerializeField] private Image recticle;
+
     private bool isDull = false;
+   
 
     InputReader inputReader;
 
@@ -18,9 +21,11 @@ public class RenderTextureSwitcher : MonoBehaviour
     [SerializeField] private Image rightCameraUI; //Inventory Image Holder
     [SerializeField] private Image lightBar; //LightBar Image Holder
     [SerializeField] private Image healthBar; //HealthBar Image Holder
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerManager playerManager;
     private Color color;
     public bool isLightMode;
+    public float dullDrainLight = 0.25f;
+    public float brightGainLight = 0.5f;
 
     private void Start()
     {
@@ -48,7 +53,7 @@ public class RenderTextureSwitcher : MonoBehaviour
         rightCameraUI = GameObject.Find("RightCameraUI").GetComponent<Image>();
         lightBar = GameObject.Find("LightBarFill").GetComponent<Image>();
         healthBar = GameObject.Find("HealthBarFill").GetComponent<Image>();
-        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
+        playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
 
     }
 
@@ -58,8 +63,10 @@ public class RenderTextureSwitcher : MonoBehaviour
         // Check for input to switch camera outputs
         if (inputReader.GetCameraSwitchPressedThisFrame())
         {
+            Debug.Log("Switch flipped");
             SwitchScreens();
             SwitchUI();
+            
         }
     }
 
@@ -67,8 +74,7 @@ public class RenderTextureSwitcher : MonoBehaviour
     {
         //Reassign the target Textures to the other camera.
         
-        fPCam.enabled = false;
-        tDCam.enabled = false;
+        
         if (!isDull)
         {
             isLightMode = false;
@@ -87,8 +93,7 @@ public class RenderTextureSwitcher : MonoBehaviour
         }
 
         toggleIsDull();
-        fPCam.enabled = true;
-        tDCam.enabled = true;
+        
         //Debug.Log("AFTER small = " + smallScreenRawImage.texture + "Large = " + largeSCreenRawImage.texture + "\nfpCam = " + fPCam.targetTexture + "tDCam = " + tDCam.targetTexture);
     }
 
@@ -122,16 +127,16 @@ public class RenderTextureSwitcher : MonoBehaviour
     public void LightBar()
     {
         //In Light Dimension & Light is not Full
-        if(isLightMode && playerMovement.playerCurrentLight < 10)
+        if(isLightMode && playerManager.currentLight < 100)
         {
-            playerMovement.playerCurrentLight += Time.deltaTime;
+            playerManager.currentLight += brightGainLight *  Time.deltaTime;
         }
 
 
         //In Dull Dimension 
-        if(!isLightMode && playerMovement.playerCurrentLight > 0 )
+        if(!isLightMode && playerManager.currentLight > 0 )
         {
-            //playerMovement.playerCurrentLight -= Time.deltaTime;
+            playerManager.currentLight -= dullDrainLight * Time.deltaTime;
         }
         else
         {
@@ -148,9 +153,31 @@ public class RenderTextureSwitcher : MonoBehaviour
     private void toggleIsDull()
     {
         isDull= !isDull;
-
+        if (isDull )
+        {
+            HideCursor();
+        } 
+        else
+        {
+            ShowCursor();
+        }
     }
-}
+    private void ShowCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        recticle.enabled = false;
+       
+    }
+    private void HideCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+       recticle.enabled= true;
+    }
+
+ }
+
 
 
     

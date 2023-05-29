@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ParticleProperties : MonoBehaviour
 {
-    public ParticleSystem particleSystem;
+    public ParticleSystem particleSys;
     public float newEmissionRate = 300f; // New emission rate value
     public float newLifetime = 1.2f; // New lifetime value
 
@@ -13,8 +13,8 @@ public class ParticleProperties : MonoBehaviour
     private void Start()
     {
         // Get the Emission and Main modules of the Particle System
-        emissionModule = particleSystem.emission;
-        mainModule = particleSystem.main;
+        emissionModule = particleSys.emission;
+        mainModule = particleSys.main;
 
 
         // Modify the emission rate and lifetime

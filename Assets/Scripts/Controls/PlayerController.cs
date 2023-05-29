@@ -74,16 +74,11 @@ public class PlayerController : MonoBehaviour
         if (isDull != renderTextureSwitcher.getIsDull())
         {
             isDull = !isDull;
-            if (isDull)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            } else
-            {
-                Cursor.lockState = CursorLockMode.None;
-            }
-        } 
+           
+        }
 
-       // grounded = characterController.isGrounded;
+
+        // grounded = characterController.isGrounded;
         if (isDull)
         {
             
