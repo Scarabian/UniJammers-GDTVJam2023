@@ -37,6 +37,7 @@ namespace k.SoundManagement
 
         public IEnumerator FadeInClip(string clipName, float fadeTime)
         {
+            Debug.Log(clipName);
             SoundClip soundClip = soundClips.Find(s => s.name == clipName);
 
             audioSource.clip = soundClip.clip;

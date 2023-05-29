@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 6502254006563615408}
   - component: {fileID: 5572651666175177290}
   - component: {fileID: 1726569208604562653}
+  - component: {fileID: 4994429360150713247}
   m_Layer: 6
   m_Name: Particle System
   m_TagString: Untagged
@@ -4980,7 +4981,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
-  
 --- !u!114 &4994429360150713247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4993,10 +4993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbde75e9d7efa146a09a548c924c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystem: {fileID: 5572651666175177290}
+  particleSys: {fileID: 0}
   newEmissionRate: 300
   newLifetime: 1.2
-
 --- !u!1 &8526787163174376763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5006,13 +5005,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2273021224371724178}
-  - component: {fileID: -9104171922403271826}
   - component: {fileID: 1558445164163082755}
   - component: {fileID: 4275342209434238470}
   - component: {fileID: 217575441643539654}
+  - component: {fileID: 8033095707491860442}
   m_Layer: 6
   m_Name: Shade
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5033,25 +5032,8 @@ Transform:
   - {fileID: 8393788969816859298}
   - {fileID: 6644306874628688502}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-9104171922403271826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8526787163174376763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bb987eb7ae09534faa251ea29fbed47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 3
-  wobbleDuration: 0.5
-  wobbleMagnitude: 1
-  enemyDamage: 1
-  playerMovement: {fileID: 0}
 --- !u!114 &1558445164163082755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5059,7 +5041,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8526787163174376763}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f6da4800a5e1a34f8be215d42978164, type: 3}
   m_Name: 
@@ -5100,9 +5082,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fbde75e9d7efa146a09a548c924c5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystem: {fileID: 5572651666175177290}
+  particleSys: {fileID: 0}
   newEmissionRate: 300
   newLifetime: 1.2
+--- !u!114 &8033095707491860442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8526787163174376763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48109965e77ed8e4bb93ee3afa568124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDull: 0
+  dullDetectionRange: 60
+  nonDullDetectionRange: 10
+  followDistanceMin: 5
+  followDistanceMax: 10
+  movementSpeed: 6
+  collisionDistance: 1
+  threat: 1
 --- !u!1 &9029621201698290372
 GameObject:
   m_ObjectHideFlags: 0
