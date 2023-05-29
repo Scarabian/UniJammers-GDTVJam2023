@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Enemy
   - soundManager
+  - IteractablePoint
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Interactable
   - Water
   - UI
   - FPObjectsOnly
