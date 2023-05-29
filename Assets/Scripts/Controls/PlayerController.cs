@@ -98,8 +98,19 @@ public class PlayerController : MonoBehaviour
 
     public void movePlayer()
     {
-        Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y);
+        if (transform.position.y <= 0.09f) 
+        {
+            Vector3 newPosition = transform.position;
+            newPosition.y = 0.1f;
+            transform.position = newPosition;
 
+           
+        
+        
+        }
+
+        Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y);
+        
         transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation(movement),rotationSpeed);
 
         transform.Translate(movement * speed * Time.deltaTime, Space.World );

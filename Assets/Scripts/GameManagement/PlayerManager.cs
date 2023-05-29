@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
     public float currentHealth = 100f;
     public float currentXP = 0f;
     public float currentLight = 100f;
+    public float threatLevel = 0f;
 
     public float lowHealthThreshold = 30f;
     public float flashDuration = 0.2f;
@@ -47,7 +48,7 @@ public class PlayerManager : MonoBehaviour
         UpdateHealthUI();
         UpdateXPUI();
         UpdateLightUI();
-
+        //UpdateThreat();
         CheckLowHealth();
     }
 

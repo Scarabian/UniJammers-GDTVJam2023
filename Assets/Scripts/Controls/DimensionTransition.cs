@@ -1,3 +1,4 @@
+using k.SoundManagement;
 using uj.input;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class RenderTextureSwitcher : MonoBehaviour
     [SerializeField] private RawImage largeScreenRawImage;  // RawImage component to display the camera output
     [SerializeField] private Material monoMaterial; // image compnent to apply to the mono camera
     [SerializeField] private Image recticle;
+    [SerializeField] private SoundManager soundManager;
 
     private bool isDull = false;
    
@@ -26,7 +28,10 @@ public class RenderTextureSwitcher : MonoBehaviour
     public bool isLightMode;
     public float dullDrainLight = 0.25f;
     public float brightGainLight = 0.5f;
-
+    private void Awake()
+    {
+        soundManager = GameObject.FindGameObjectWithTag("soundManager").GetComponent<SoundManager>();
+    }
     private void Start()
     {
         //Start in Light Dimension
@@ -54,6 +59,8 @@ public class RenderTextureSwitcher : MonoBehaviour
         lightBar = GameObject.Find("LightBarFill").GetComponent<Image>();
         healthBar = GameObject.Find("HealthBarFill").GetComponent<Image>();
         playerManager = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+
+        soundManager.FadeInClip("brightFull", 2);
 
     }
 
@@ -155,11 +162,14 @@ public class RenderTextureSwitcher : MonoBehaviour
         isDull= !isDull;
         if (isDull )
         {
+            Debug.Log("Sound");
             HideCursor();
+            soundManager.PlaySound("dullFull");
         } 
         else
         {
             ShowCursor();
+            soundManager.PlaySound("brightFull"); 
         }
     }
     private void ShowCursor()
