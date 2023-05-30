@@ -82,6 +82,33 @@ namespace uj.input.actions
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MeleeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ad378e2-2d61-4eea-97d3-785958e89dc0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThrowAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""d67e20ea-212f-4585-8391-20d603b13a30"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RangeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""e4895959-c21e-4d89-9886-6317302405a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -241,8 +268,30 @@ namespace uj.input.actions
                 },
                 {
                     ""name"": """",
+                    ""id"": ""663ed9cf-e863-4c7c-b61f-1fc8a7d4bb9c"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""971bf1cb-579d-4d64-b7de-21984154b5d6"",
                     ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCamera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""536de30d-532e-454f-a5b5-a5b93c78abc4"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -263,12 +312,100 @@ namespace uj.input.actions
                 },
                 {
                     ""name"": """",
+                    ""id"": ""276014ae-dbff-4283-8993-b3607905a3a4"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""6aa7426d-7d4b-4cd6-994b-6c802e573ce6"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""262d6c27-0c63-4bd4-8973-c5ee0c1ae0a9"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6181605-e963-4f32-9580-0b5061098fc0"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""253d6f51-b3ca-4594-b992-3182f6dba81c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9807c801-3948-48fa-b2eb-8502c13c8b5f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThrowAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b13bb27-2999-49c1-808f-2a1b4f7a8543"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThrowAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dc0000d6-3eca-43a0-b02c-e3dc7848afdd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b269c492-1220-4e7e-87fe-97cca6656531"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RangeAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -285,6 +422,9 @@ namespace uj.input.actions
             m_Player_SwitchCamera = m_Player.FindAction("SwitchCamera", throwIfNotFound: true);
             m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
             m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+            m_Player_MeleeAttack = m_Player.FindAction("MeleeAttack", throwIfNotFound: true);
+            m_Player_ThrowAttack = m_Player.FindAction("ThrowAttack", throwIfNotFound: true);
+            m_Player_RangeAttack = m_Player.FindAction("RangeAttack", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -352,6 +492,9 @@ namespace uj.input.actions
         private readonly InputAction m_Player_SwitchCamera;
         private readonly InputAction m_Player_Interact;
         private readonly InputAction m_Player_Jump;
+        private readonly InputAction m_Player_MeleeAttack;
+        private readonly InputAction m_Player_ThrowAttack;
+        private readonly InputAction m_Player_RangeAttack;
         public struct PlayerActions
         {
             private @InputActions m_Wrapper;
@@ -362,6 +505,9 @@ namespace uj.input.actions
             public InputAction @SwitchCamera => m_Wrapper.m_Player_SwitchCamera;
             public InputAction @Interact => m_Wrapper.m_Player_Interact;
             public InputAction @Jump => m_Wrapper.m_Player_Jump;
+            public InputAction @MeleeAttack => m_Wrapper.m_Player_MeleeAttack;
+            public InputAction @ThrowAttack => m_Wrapper.m_Player_ThrowAttack;
+            public InputAction @RangeAttack => m_Wrapper.m_Player_RangeAttack;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -389,6 +535,15 @@ namespace uj.input.actions
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @MeleeAttack.started += instance.OnMeleeAttack;
+                @MeleeAttack.performed += instance.OnMeleeAttack;
+                @MeleeAttack.canceled += instance.OnMeleeAttack;
+                @ThrowAttack.started += instance.OnThrowAttack;
+                @ThrowAttack.performed += instance.OnThrowAttack;
+                @ThrowAttack.canceled += instance.OnThrowAttack;
+                @RangeAttack.started += instance.OnRangeAttack;
+                @RangeAttack.performed += instance.OnRangeAttack;
+                @RangeAttack.canceled += instance.OnRangeAttack;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -411,6 +566,15 @@ namespace uj.input.actions
                 @Jump.started -= instance.OnJump;
                 @Jump.performed -= instance.OnJump;
                 @Jump.canceled -= instance.OnJump;
+                @MeleeAttack.started -= instance.OnMeleeAttack;
+                @MeleeAttack.performed -= instance.OnMeleeAttack;
+                @MeleeAttack.canceled -= instance.OnMeleeAttack;
+                @ThrowAttack.started -= instance.OnThrowAttack;
+                @ThrowAttack.performed -= instance.OnThrowAttack;
+                @ThrowAttack.canceled -= instance.OnThrowAttack;
+                @RangeAttack.started -= instance.OnRangeAttack;
+                @RangeAttack.performed -= instance.OnRangeAttack;
+                @RangeAttack.canceled -= instance.OnRangeAttack;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -436,6 +600,9 @@ namespace uj.input.actions
             void OnSwitchCamera(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnJump(InputAction.CallbackContext context);
+            void OnMeleeAttack(InputAction.CallbackContext context);
+            void OnThrowAttack(InputAction.CallbackContext context);
+            void OnRangeAttack(InputAction.CallbackContext context);
         }
     }
 }
