@@ -109,6 +109,15 @@ namespace uj.input.actions
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""c758e94f-7f85-45ed-9f3c-cab9107d7a55"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -408,6 +417,28 @@ namespace uj.input.actions
                     ""action"": ""RangeAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bcd6466f-fd11-4666-80d8-1f97e354ef99"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1589c22c-c826-462e-918a-5aebac278194"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -425,6 +456,7 @@ namespace uj.input.actions
             m_Player_MeleeAttack = m_Player.FindAction("MeleeAttack", throwIfNotFound: true);
             m_Player_ThrowAttack = m_Player.FindAction("ThrowAttack", throwIfNotFound: true);
             m_Player_RangeAttack = m_Player.FindAction("RangeAttack", throwIfNotFound: true);
+            m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -495,6 +527,7 @@ namespace uj.input.actions
         private readonly InputAction m_Player_MeleeAttack;
         private readonly InputAction m_Player_ThrowAttack;
         private readonly InputAction m_Player_RangeAttack;
+        private readonly InputAction m_Player_Run;
         public struct PlayerActions
         {
             private @InputActions m_Wrapper;
@@ -508,6 +541,7 @@ namespace uj.input.actions
             public InputAction @MeleeAttack => m_Wrapper.m_Player_MeleeAttack;
             public InputAction @ThrowAttack => m_Wrapper.m_Player_ThrowAttack;
             public InputAction @RangeAttack => m_Wrapper.m_Player_RangeAttack;
+            public InputAction @Run => m_Wrapper.m_Player_Run;
             public InputActionMap Get() { return m_Wrapper.m_Player; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -544,6 +578,9 @@ namespace uj.input.actions
                 @RangeAttack.started += instance.OnRangeAttack;
                 @RangeAttack.performed += instance.OnRangeAttack;
                 @RangeAttack.canceled += instance.OnRangeAttack;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
 
             private void UnregisterCallbacks(IPlayerActions instance)
@@ -575,6 +612,9 @@ namespace uj.input.actions
                 @RangeAttack.started -= instance.OnRangeAttack;
                 @RangeAttack.performed -= instance.OnRangeAttack;
                 @RangeAttack.canceled -= instance.OnRangeAttack;
+                @Run.started -= instance.OnRun;
+                @Run.performed -= instance.OnRun;
+                @Run.canceled -= instance.OnRun;
             }
 
             public void RemoveCallbacks(IPlayerActions instance)
@@ -603,6 +643,7 @@ namespace uj.input.actions
             void OnMeleeAttack(InputAction.CallbackContext context);
             void OnThrowAttack(InputAction.CallbackContext context);
             void OnRangeAttack(InputAction.CallbackContext context);
+            void OnRun(InputAction.CallbackContext context);
         }
     }
 }

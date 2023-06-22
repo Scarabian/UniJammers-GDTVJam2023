@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
    // private CharacterController characterController;
     
     public float firstPersonSpeed = 3f;
+    public float firstPersonRun = 1f;
     public float firstPersonRotationSpeed = 10f;
     private bool isDull;
 
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour
     public float ysens = 30f;
 
     public float rotationSpeed = .15f;
-    public float speed = 5f;
+    public float speed = 6f;
     
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -53,8 +54,10 @@ public class PlayerController : MonoBehaviour
     public void OnInteract(InputAction.CallbackContext context)
     {
         //e key has been pressed
-
-
+    }
+    public void OnRun(InputAction.CallbackContext context)
+    {
+        firstPersonRun = 1.5f;
     }
 
     // Start is called before the first frame update
@@ -102,10 +105,7 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 newPosition = transform.position;
             newPosition.y = 0.1f;
-            transform.position = newPosition;
-
-           
-        
+            transform.position = newPosition;          
         
         }
 
@@ -113,7 +113,8 @@ public class PlayerController : MonoBehaviour
         
         transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation(movement),rotationSpeed);
 
-        transform.Translate(movement * speed * Time.deltaTime, Space.World );
+        transform.Translate(movement * (speed * firstPersonRun) * Time.deltaTime, Space.World );
+        firstPersonRun = 1f;
     }
     public void MovePlayerFP()
     {
@@ -125,7 +126,8 @@ public class PlayerController : MonoBehaviour
         moveDirection.Normalize();
 
         // Apply movement
-        transform.Translate(moveDirection * firstPersonSpeed * Time.deltaTime, Space.World);
+        transform.Translate(moveDirection * (firstPersonSpeed*firstPersonRun) * Time.deltaTime, Space.World);
+        firstPersonRun = 1;
 
        
         /*transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
